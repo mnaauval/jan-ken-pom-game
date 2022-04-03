@@ -95,6 +95,7 @@ function App() {
     const changeNinja = () => {
       setKenElement(Ken);
       setDisableBtn(false);
+      setTextWinner("");
     };
 
     setMyTimeout(
