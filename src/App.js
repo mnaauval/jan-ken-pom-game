@@ -15,24 +15,23 @@ function App() {
   const [skorPlayer, setSkorPlayer] = useState(localStorage.getItem("skorPlayer") ? JSON.parse(localStorage.getItem("skorPlayer")) : 0);
   const [textWinner, setTextWinner] = useState("");
   const [kenElement, setKenElement] = useState(Ken);
-  const [timeout, setTimeout] = useState();
+  const [disableBtn, setDisableBtn] = useState(false);
+  const [myTimeout, setMyTimeout] = useState();
 
   const janken = (elementPlayer) => {
     let elementBot = Math.floor(Math.random() * 3);
+    console.log(elementBot);
 
     switch (elementBot) {
       case 0:
-        // ken.style.backgroundImage = "url(image/ken-batu.png)";
         setKenElement(KenBatu);
         console.log("ken-batu");
         break;
       case 1:
-        // ken.style.backgroundImage = "url(image/ken-gunting.png)";
         setKenElement(KenGunting);
         console.log("ken-gunting");
         break;
       default:
-        // ken.style.backgroundImage = "url(image/ken-kertas.png)";
         setKenElement(KenKertas);
         console.log("ken-kertas");
         break;
@@ -70,7 +69,7 @@ function App() {
   };
 
   const result = (result) => {
-    clearTimeout(timeout);
+    clearTimeout(myTimeout);
 
     switch (result) {
       case "ken":
@@ -91,12 +90,15 @@ function App() {
         break;
     }
 
-    // setTimeout(
-    //   setTimeout(() => {
-    //     setKenElement(null);
-    //     // setKenElement(Ken);
-    //   }, 3000)
-    // );
+    const changeNinja = () => {
+      setKenElement(Ken);
+    };
+
+    setMyTimeout(
+      setTimeout(() => {
+        changeNinja();
+      }, 2000)
+    );
   };
 
   const resetHandler = () => {
@@ -122,9 +124,9 @@ function App() {
         <h1>{textWinner}</h1>
       </TextWinnerContainer>
       <ElementContainer>
-        <Element onClick={() => janken(0)} image={Stone} title="Pilih batu"></Element>
-        <Element onClick={() => janken(1)} image={Scisor} title="Pilih gunting"></Element>
-        <Element onClick={() => janken(2)} image={Paper} title="Pilih kertas"></Element>
+        <Element disabled={disableBtn} onClick={() => janken(0)} image={Stone} title="Pilih batu"></Element>
+        <Element disabled={disableBtn} onClick={() => janken(1)} image={Scisor} title="Pilih gunting"></Element>
+        <Element disabled={disableBtn} onClick={() => janken(2)} image={Paper} title="Pilih kertas"></Element>
       </ElementContainer>
       <ResetButton onClick={resetHandler} title="Mulai ulang">
         Reset Game
