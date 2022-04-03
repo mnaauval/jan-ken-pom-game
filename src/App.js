@@ -19,6 +19,8 @@ function App() {
   const [myTimeout, setMyTimeout] = useState();
 
   const janken = (elementPlayer) => {
+    setDisableBtn(true);
+    console.log(disableBtn);
     let elementBot = Math.floor(Math.random() * 3);
     console.log(elementBot);
 
@@ -92,6 +94,7 @@ function App() {
 
     const changeNinja = () => {
       setKenElement(Ken);
+      setDisableBtn(false);
     };
 
     setMyTimeout(
