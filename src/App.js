@@ -176,6 +176,10 @@ const ScoreContainer = styled.div`
   }
 `;
 
+const TextWinnerContainer = styled.div`
+  margin-top: 150px;
+`;
+
 const ElementContainer = styled.div`
   position: fixed;
   bottom: 0;
@@ -194,10 +198,6 @@ const ElementContainer = styled.div`
   @media (max-width: 500px) {
     padding: 10px 15px;
   }
-`;
-
-const TextWinnerContainer = styled.div`
-  margin-top: 150px;
 `;
 
 const Element = styled.button`
@@ -224,6 +224,23 @@ const Element = styled.button`
   &:active {
     transform: translateY(8px);
     box-shadow: none;
+  }
+
+  @keyframes ninjagoyang {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+
+  &:hover {
+    animation: ninjagoyang 0.75s infinite;
   }
 `;
 
