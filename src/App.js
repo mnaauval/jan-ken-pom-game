@@ -18,6 +18,8 @@ function App() {
   const [disableBtn, setDisableBtn] = useState(false);
   const [myTimeout, setMyTimeout] = useState();
 
+  // console.log("skorken " + skorKen + " storageken " + localStorage.getItem("skorKen"));
+
   const janken = (elementPlayer) => {
     setDisableBtn(true);
     console.log(disableBtn);
@@ -76,13 +78,13 @@ function App() {
     switch (result) {
       case "ken":
         setSkorKen(skorKen + 1);
-        localStorage.setItem("skorKen", skorKen);
+        localStorage.setItem("skorKen", skorKen + 1);
         console.log("Ninja Ken menang");
         setTextWinner("Ken menang");
         break;
       case "player":
         setSkorPlayer(skorPlayer + 1);
-        localStorage.setItem("skorPlayer", skorPlayer);
+        localStorage.setItem("skorPlayer", skorPlayer + 1);
         console.log("Anda menang");
         setTextWinner("Anda menang");
         break;
